@@ -1,0 +1,21 @@
+{
+  "name": "janfish/file-slice-upload",
+  "description": "janfish file slice upload",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Robert",
+      "email": "zeng444@163.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "ext-json": "*"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Janfish\\Upload\\": "src/"
+    }
+  }
+}
