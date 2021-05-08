@@ -1,7 +1,7 @@
 <template>
   <div class="slice-wrap">
-    <div class="file" v-if="file">
-      <el-button icon="el-icon-tickets" class="info" type="text">{{file}}</el-button>
+    <div class="file" v-if="value">
+      <el-button icon="el-icon-tickets" class="info" type="text">{{value}}</el-button>
       <i class="el-icon-close" style="color:red" @click="remove"></i>
     </div>
     <div>
@@ -20,11 +20,14 @@
     data () {
       return {
         msg: '',
-        progress: '',
-        file: ''
+        progress: ''
       }
     },
     props: {
+      value: {
+        type: String,
+        default: ''
+      },
       accept: {
         type: String,
         default: ''
@@ -48,7 +51,6 @@
     },
     methods: {
       remove () {
-        this.file = ''
         this.msg = ''
         this.progress = ''
         this.$refs.sliceUploadInput.value = ''
@@ -58,7 +60,6 @@
         this.$refs.sliceUploadInput.click()
       },
       upload (e) {
-        this.file = ''
         this.msg = ''
         this.progress = ''
         const file = e.target.files[0]
@@ -91,7 +92,6 @@
           } else {
             this.msg = ''
             this.progress = ''
-            this.file = res.data.path
             this.$refs.sliceUploadInput.value = ''
             this.$emit('input', res.data.path)
             this.$emit('on-success', res.data.url, res.data.path)
