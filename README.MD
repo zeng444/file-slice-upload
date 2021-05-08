@@ -1,5 +1,7 @@
 #### 文件分片上传
 
+> 文件分片，实现超大文件的在线上传
+
 ```
 $chunkQuantity = $_POST['chunkQuantity'];
 $currentChunkNo = $_POST['chunkNo'];
@@ -46,8 +48,8 @@ die(json_encode([
     accept="application/x-msdownload;application/pdf"
     :show-progress="true"
     chunk-size="1"
-    @on-progress="pp"
-    @on-error="test" />
+    @on-progress="progressHandle"
+    @on-error="errorHandle" />
 ```
 
 - 参数
