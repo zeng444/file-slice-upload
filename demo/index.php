@@ -15,9 +15,23 @@ $dist = 'files/' . $name . '.' . $extension;
 $file = new File($chunkQuantity);
 $file->setSessionKey($fileName);
 if (!$file->append($currentChunkNo, $tempPath, $dist)) {
-    echo json_encode(['status' => false, 'isFinished' => false]);
+    echo json_encode([
+        'status'=>'success',
+        'data' => [
+            'path' => $dist,
+            'url' => '',
+            'isFinished' => false,
+        ],
+    ]);
 } else {
-    echo json_encode(['status' => true, 'isFinished' => $file->isFinished()]);
+    echo json_encode([
+        'status'=>'success',
+        'data' => [
+            'path' => $dist,
+            'url' => '',
+            'isFinished' =>  $file->isFinished(),
+        ],
+    ]);
 }
 
 
